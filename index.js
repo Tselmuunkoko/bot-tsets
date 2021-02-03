@@ -41,12 +41,20 @@ app.post('/webhook/', function (req, res) {
 
 function sendTextwidthnicethings(sender, text) {
     messageData = {
-        // text:text,
-        "quick_reply": {
-            "payload": "DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-          },
-        "mid": "m_AG5Hz2Uq7tuwNEhXfYYKj8mJEM_QPpz5jdCK48PnKAjSdjfipqxqMvK8ma6AC8fplwlqLP_5cgXIbu7I3rBN0P",
-        "text": "Green"
+        text:text,
+        quick_replies:[
+            {
+              "content_type":"text",
+              "title":"Red",
+              "payload":"<POSTBACK_PAYLOAD>",
+              "image_url":"http://example.com/img/red.png"
+            },{
+              "content_type":"text",
+              "title":"Green",
+              "payload":"<POSTBACK_PAYLOAD>",
+              "image_url":"https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color/254000/67-512.png"
+            }
+          ]
     }
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',

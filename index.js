@@ -30,7 +30,10 @@ app.post('/webhook/', function (req, res) {
         if (event.message && event.message.text) {
             text = event.message.text;
             // Your Logic Replaces the following Line
-            sendTextMessage(sender, "Tselmuunzaya received, echo: "+ text.substring(0, 200));
+            if(text.length>10)
+                sendTextMessage(sender, "BIG one: "+ text.substring(0, 200));
+            else
+                sendTextMessage(sender, "Tselmuunzaya received, echo: "+ text.substring(0, 200));
         }
     }
     res.sendStatus(200);

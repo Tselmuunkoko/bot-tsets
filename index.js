@@ -47,12 +47,12 @@ function sendTextwidthnicethings(sender, text) {
               "content_type":"text",
               "title":"Red",
               "payload":"<POSTBACK_PAYLOAD>",
-              "image_url":"http://example.com/img/red.png"
+              "image_url":"https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color/254000/67-512.png"
             },{
               "content_type":"text",
               "title":"Green",
               "payload":"<POSTBACK_PAYLOAD>",
-              "image_url":"http://example.com/img/green.png"
+              "image_url":"https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color/254000/67-512.png"
             }
           ]
     }

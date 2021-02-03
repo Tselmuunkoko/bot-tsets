@@ -31,13 +31,48 @@ app.post('/webhook/', function (req, res) {
             text = event.message.text;
             // Your Logic Replaces the following Line
             if(text.length>10)
-                sendTextMessage(sender, "BIG one: "+ text.substring(0, 200));
+                sendTextwidthnicethings(sender, "BIG one: "+ text.substring(0, 200));
             else
                 sendTextMessage(sender, "Tselmuunzaya received, echo: "+ text.substring(0, 200));
         }
     }
     res.sendStatus(200);
 });
+
+function sendTextwidthnicethings(sender, text) {
+    messageData = {
+        text:text,
+        quick_replies:[
+            {
+              "content_type":"text",
+              "title":"Red",
+              "payload":"<POSTBACK_PAYLOAD>",
+              "image_url":"http://example.com/img/red.png"
+            },{
+              "content_type":"text",
+              "title":"Green",
+              "payload":"<POSTBACK_PAYLOAD>",
+              "image_url":"http://example.com/img/green.png"
+            }
+          ]
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:app.get('page_access_token')},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
+}
+
 
 function sendTextMessage(sender, text) {
     messageData = {
